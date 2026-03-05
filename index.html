@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Paxton – Ken Paxton for U.S. Senate</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --red:   #B22234;
+      --navy:  #0A2240;
+      --gold:  #C9A84C;
+      --white: #FFFFFF;
+      --light: #F4F4F4;
+    }
+
+    body {
+      font-family: 'Open Sans', sans-serif;
+      color: var(--navy);
+      background: var(--white);
+    }
+
+    /* ── NAV ── */
+    nav {
+      background: var(--navy);
+      padding: 0 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 4px solid var(--red);
+    }
+
+    .nav-logo {
+      font-family: 'Oswald', sans-serif;
+      font-weight: 700;
+      font-size: 1.25rem;
+      color: var(--white);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .nav-logo span { color: var(--gold); }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+    }
+
+    nav ul a {
+      font-family: 'Oswald', sans-serif;
+      font-weight: 600;
+      font-size: 0.95rem;
+      color: var(--white);
+      text-decoration: none;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    nav ul a:hover { color: var(--gold); }
+
+    /* ── HERO ── */
+    .hero {
+      position: relative;
+      min-height: 90vh;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      background: var(--navy);
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('Assets/donald_trump_election_2024_gettyimages-2183216502_edit.jpg');
+      background-size: cover;
+      background-position: center top;
+      opacity: 0.35;
+    }
+
+    /* stars pattern overlay */
+    .hero-bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to right, rgba(10,34,64,0.95) 40%, rgba(10,34,64,0.3) 100%);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 680px;
+      padding: 4rem 5vw;
+    }
+
+    .hero-eyebrow {
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1rem;
+    }
+
+    .hero h1 {
+      font-family: 'Oswald', sans-serif;
+      font-weight: 700;
+      font-size: clamp(2.8rem, 6vw, 5rem);
+      line-height: 1.05;
+      color: var(--white);
+      text-transform: uppercase;
+      margin-bottom: 1.25rem;
+    }
+
+    .hero h1 .accent { color: var(--red); }
+
+    .hero p {
+      font-size: 1.15rem;
+      color: rgba(255,255,255,0.88);
+      line-height: 1.7;
+      max-width: 540px;
+    }
+
+    /* ── ENDORSEMENT BANNER ── */
+    .endorsement-bar {
+      background: var(--red);
+      text-align: center;
+      padding: 1.1rem 2rem;
+    }
+
+    .endorsement-bar p {
+      font-family: 'Oswald', sans-serif;
+      font-weight: 700;
+      font-size: clamp(1rem, 2.5vw, 1.35rem);
+      color: var(--white);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .endorsement-bar p span { color: var(--gold); }
+
+    /* ── ABOUT / CANDIDATE ── */
+    .candidate {
+      background: var(--light);
+      padding: 5rem 5vw;
+    }
+
+    .section-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .candidate-img {
+      width: 100%;
+      border-radius: 4px;
+      box-shadow: 0 8px 40px rgba(0,0,0,0.2);
+      display: block;
+    }
+
+    .section-label {
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 0.75rem;
+    }
+
+    .section-title {
+      font-family: 'Oswald', sans-serif;
+      font-weight: 700;
+      font-size: clamp(2rem, 4vw, 2.8rem);
+      line-height: 1.1;
+      text-transform: uppercase;
+      color: var(--navy);
+      margin-bottom: 1.25rem;
+    }
+
+    .section-title .accent { color: var(--red); }
+
+    .section-body p {
+      font-size: 1.05rem;
+      line-height: 1.75;
+      color: #333;
+      margin-bottom: 1rem;
+    }
+
+    .section-body p:last-child { margin-bottom: 0; }
+
+    /* ── ISSUES ── */
+    .issues {
+      background: var(--navy);
+      padding: 5rem 5vw;
+      text-align: center;
+    }
+
+    .issues .section-title { color: var(--white); margin-bottom: 0.5rem; }
+    .issues .section-title .accent { color: var(--gold); }
+    .issues .section-label { color: var(--gold); }
+
+    .issues-subtitle {
+      color: rgba(255,255,255,0.75);
+      font-size: 1.05rem;
+      max-width: 600px;
+      margin: 0 auto 3rem;
+    }
+
+    .issues-grid {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .issue-card {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-top: 4px solid var(--red);
+      border-radius: 4px;
+      padding: 2rem 1.5rem;
+      text-align: left;
+    }
+
+    .issue-icon {
+      font-size: 2rem;
+      margin-bottom: 0.75rem;
+      display: block;
+    }
+
+    .issue-card h3 {
+      font-family: 'Oswald', sans-serif;
+      font-weight: 700;
+      font-size: 1.15rem;
+      text-transform: uppercase;
+      color: var(--white);
+      margin-bottom: 0.6rem;
+      letter-spacing: 0.05em;
+    }
+
+    .issue-card p {
+      font-size: 0.92rem;
+      color: rgba(255,255,255,0.7);
+      line-height: 1.6;
+    }
+
+    /* ── QUOTE ── */
+    .quote-section {
+      background: var(--red);
+      padding: 4.5rem 5vw;
+      text-align: center;
+    }
+
+    blockquote {
+      max-width: 820px;
+      margin: 0 auto;
+    }
+
+    blockquote p {
+      font-family: 'Oswald', sans-serif;
+      font-weight: 600;
+      font-size: clamp(1.5rem, 3.5vw, 2.2rem);
+      color: var(--white);
+      line-height: 1.35;
+      margin-bottom: 1.25rem;
+    }
+
+    blockquote cite {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1rem;
+      font-weight: 400;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.8);
+      font-style: normal;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #060f1c;
+      border-top: 4px solid var(--red);
+      padding: 2.5rem 5vw;
+      text-align: center;
+    }
+
+    .footer-logo {
+      font-family: 'Oswald', sans-serif;
+      font-weight: 700;
+      font-size: 1.4rem;
+      color: var(--white);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 0.75rem;
+    }
+
+    .footer-logo span { color: var(--gold); }
+
+    footer p {
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.4);
+      line-height: 1.7;
+      max-width: 640px;
+      margin: 0 auto;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      nav ul { display: none; }
+
+      .section-inner {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+      }
+
+      .hero-content { padding: 3rem 1.5rem; }
+
+      .candidate { padding: 3.5rem 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <ul>
+      <li><a href="#about">About Ken</a></li>
+      <li><a href="#issues">Issues</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-content">
+      <h1>Ken Paxton<br>for <span class="accent">U.S. Senate</span></h1>
+      <p>
+        Ken Paxton - Texas's toughest fighter
+        for the border, the Constitution, and America First values. It's time to
+        send a true conservative warrior to Washington.
+      </p>
+    </div>
+  </section>
+
+  <!-- ENDORSEMENT BANNER -->
+<!--   <div class="endorsement-bar">
+    <p>"Ken Paxton has my <span>Complete and Total Endorsement</span> for the United States Senate. He is a GREAT fighter for Texas!" </p>
+  </div>
+ -->
+  <!-- ABOUT / CANDIDATE -->
+  <section class="candidate" id="about">
+    <div class="section-inner">
+      <div>
+        <img
+          src="Assets/npr.brightspotcdn.jpg"
+          alt="Ken Paxton"
+          class="candidate-img"
+        />
+      </div>
+      <div class="section-body">
+        <p class="section-label">Meet the Candidate</p>
+        <h2 class="section-title">Ken Paxton:<br>Texas's <span class="accent">Top Fighter</span></h2>
+        <p>
+          As Texas Attorney General, Ken Paxton has fought the Biden-Harris
+          administration more than any other AG in the country — filing over 60
+          lawsuits to protect Texans from federal overreach, open borders, and
+          unconstitutional mandates.
+        </p>
+        <p>
+          Ken Paxton is taking
+          that fight to Washington. Texas needs a Senator who will stand tall
+          for the border, the Second Amendment, and America First — every single day.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ISSUES -->
+  <section class="issues" id="issues">
+    <p class="section-label">America First</p>
+    <h2 class="section-title">Where Ken <span class="accent">Stands</span></h2>
+    <p class="issues-subtitle">Bold, conservative leadership on the issues that matter most to Texans and all Americans.</p>
+    <div class="issues-grid">
+      <div class="issue-card">
+        <span class="issue-icon">🇺🇸</span>
+        <h3>Secure the Border</h3>
+        <p>Complete the wall. End catch-and-release. Deport criminal illegals. Texas will lead the way.</p>
+      </div>
+      <div class="issue-card">
+        <span class="issue-icon">🔫</span>
+        <h3>2nd Amendment</h3>
+        <p>No red flag laws. No gun grabs. The right to keep and bear arms shall not be infringed — period.</p>
+      </div>
+      <div class="issue-card">
+        <span class="issue-icon">⚡</span>
+        <h3>American Energy</h3>
+        <p>Drill baby, drill. Texas powers America. Ken will fight every radical Green New Deal agenda item.</p>
+      </div>
+      <div class="issue-card">
+        <span class="issue-icon">⚖️</span>
+        <h3>Rule of Law</h3>
+        <p>As AG, Ken took on the deep state. In the Senate, he'll keep fighting for equal justice and the Constitution.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUOTE -->
+  <section class="quote-section">
+    <blockquote>
+    </blockquote>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-logo"><span>Paxton</span> &mdash; U.S. Senate</div>
+    <p>
+      Not authorized by any candidate or candidate's committee.<br />
+      &copy; 2026 Paxton. All rights reserved.
+    </p>
+  </footer>
+
+</body>
+</html>
